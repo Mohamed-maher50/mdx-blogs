@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
-const { withContentlayer } = require("next-contentlayer2");
+import { withContentlayer } from "next-contentlayer";
 /** @type {import('next').NextConfig} */
-const nextConfig: NextConfig = { reactStrictMode: true };
+const nextConfig: NextConfig = { reactStrictMode: true, swcMinify: true };
 
 export default withContentlayer(nextConfig);

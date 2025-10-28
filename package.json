@@ -7,18 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:content": "contentlayer2 build"
+    "build:content": "contentlayer build"
   },
   "dependencies": {
     "contentful": "^11.4.4",
-    "contentlayer2": "^0.5.3",
+    "contentlayer": "^0.3.4",
     "date-fns": "^4.1.0",
     "next": "15.1.6",
-    "next-contentlayer2": "^0.5.3",
+    "next-contentlayer": "^0.3.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
+    "@contentlayer/source-files": "^0.3.4",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/typography": "^0.5.19",
     "@types/mdx": "^2.0.13",

@@ -1,4 +1,4 @@
-import { useMDXComponent } from "next-contentlayer2/hooks";
+import { useMDXComponent } from "next-contentlayer/hooks";
 import type { MDXComponents } from "mdx/types";
 import React from "react";
 const components: MDXComponents = {
