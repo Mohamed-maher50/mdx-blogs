@@ -3,5 +3,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="container mx-auto max-w-6xl">{children}</div>;
+  return (
+    <div className="container mx-auto py-10 px-10 max-w-6xl">{children}</div>
+  );
 }

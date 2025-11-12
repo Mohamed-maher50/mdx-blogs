@@ -1,8 +1,8 @@
-import { Post } from "@/.contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import Link from "next/link";
-import { useMDXComponent } from "next-contentlayer2/hooks";
-function PostCard(post: Post) {
+import { useMDXComponent } from "next-contentlayer/hooks";
+import { Blog } from "@/.contentlayer/generated";
+function PostCard(post: Blog) {
   const MDXContent = useMDXComponent(post.body.code);
   return (
     <div className="mb-8">

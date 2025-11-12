@@ -6,7 +6,7 @@ const components: MDXComponents = {
     return (
       <h1
         {...props}
-        className="text-5xl text-center   font-bold tracking-tight"
+        className="text-5xl  border-primary  border-b-8 w-fit  inline-block tracking-tight      font-bold "
       >
         {props.children}
       </h1>
@@ -14,10 +14,7 @@ const components: MDXComponents = {
   },
   h2: (props) => {
     return (
-      <h1
-        {...props}
-        className="text-xl text-gray-600  font-semibold tracking-tight"
-      >
+      <h1 {...props} className="text-xl  font-semibold tracking-tight">
         {props.children}
       </h1>
     );
@@ -26,7 +23,7 @@ const components: MDXComponents = {
 const Mdx = ({ code }: { code: string }) => {
   const MdxComponent = useMDXComponent(code);
   return (
-    <div className="prose lg:prose-xl mx-auto">
+    <div className="prose-pre:bg-accent prose-h1:no-underline prose-headings:underline prose-pre:text-accent-foreground lg:prose-xl prose-neutral mx-auto">
       <MdxComponent components={components} />
     </div>
   );

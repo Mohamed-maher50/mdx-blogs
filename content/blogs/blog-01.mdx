@@ -1,0 +1,48 @@
+---
+title: Getting Started with React 19
+desc: Learn the new features, performance improvements, and migration tips for React 19 — the latest version of the world’s most popular UI library.
+date: "2025-10-25"
+readingTime: 5 min read
+---
+
+# Getting Started with React 19
+
+React 19 is here — and it’s a big one. After several years of incremental improvements, React has introduced features that simplify state management, optimize rendering, and improve developer ergonomics.
+
+If you’re already familiar with React 18, this guide will help you understand what’s new, what’s changed, and how to start using React 19 today.
+
+---
+
+## Why React 19 Matters
+
+React 19 builds on the foundations laid by React 18’s concurrent rendering and Suspense architecture. The new version refines those ideas, bringing smoother rendering, better memory efficiency, and a more intuitive developer experience.
+
+The most important updates include:
+
+- **React Compiler** – automatically memoizes your components.
+- **Actions API** – simplifies asynchronous UI flows like forms.
+- **useOptimistic** – new hook for handling optimistic UI updates.
+- **Improved Server Components** – now stable and easier to integrate.
+- **Enhanced JSX transforms** – smaller bundles and better type safety.
+
+---
+
+## The React Compiler: Smarter, Faster Components
+
+One of the headline features is the new **React Compiler** — a static analysis tool that automatically optimizes your components without you needing to manually wrap them in `useMemo` or `useCallback`.
+
+### Before (React 18)
+
+```jsx
+function TodoList({ todos }) {
+  const completed = useMemo(() => todos.filter((todo) => todo.done), [todos]);
+
+  return (
+    <ul>
+      {completed.map((todo) => (
+        <li key={todo.id}>{todo.text}</li>
+      ))}
+    </ul>
+  );
+}
+```
