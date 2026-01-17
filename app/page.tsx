@@ -130,8 +130,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      {/* Docs Section */}
-      <section
+      {/* <section
         id="docs"
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
       >
@@ -153,7 +152,7 @@ export default async function Home() {
             </Link>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
-            {/* {allDocs.map((doc) => (
+            {allDocs.map((doc) => (
               <Link
                 key={doc._id}
                 href={`/${doc._id}`}
@@ -171,10 +170,10 @@ export default async function Home() {
                   </p>
                 </div>
               </Link>
-            ))} */}
+            ))} 
           </div>
         </div>
-      </section>
+      </section> */}
       {/* CTA Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="bg-linear-to-r from-primary/20 to-accent/20 border border-primary/30 rounded-lg p-12 text-center space-y-6">

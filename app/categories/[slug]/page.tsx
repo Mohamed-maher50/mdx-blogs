@@ -1,10 +1,15 @@
 import { getBlogsByCategory } from "@/features/blogs/api";
-import { getCategoryBySlug } from "@/features/categories/api";
+import { getCategories, getCategoryBySlug } from "@/features/categories/api";
 import * as Icons from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
+// This function runs at build time
+export async function generateStaticParams() {
+  const categories = await getCategories();
+  return categories.map((category) => ({ slug: category.slug }));
+}
 const page = async ({ params }: { params: Promise<{ slug?: string }> }) => {
   const { slug } = await params;
   if (!slug) notFound();
