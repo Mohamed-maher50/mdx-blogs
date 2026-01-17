@@ -1,10 +1,15 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen } from "lucide-react";
+import * as Icons from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { categories } from "@/constants/categories";
-import { allBlogs, allDocs } from "@/.contentlayer/generated";
+import { getCategories } from "@/features/categories/api";
+import { ElementType } from "react";
+import { cn } from "@/lib/utils";
+import { getBlogs } from "@/features/blogs/api";
 
-export default function Home() {
+export default async function Home() {
+  const categories = await getCategories();
+  const blogs = await getBlogs();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -30,7 +35,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Blogs Section */}
       <section
         id="blogs"
@@ -50,14 +54,14 @@ export default function Home() {
               href="/blogs"
               className="text-primary hover:text-accent transition flex items-center gap-2"
             >
-              View All <ArrowRight className="w-4 h-4" />
+              View All <Icons.ArrowRight className="w-4 h-4" />
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {allBlogs.map((blog) => (
+            {blogs.map((blog) => (
               <Link
-                key={blog._id}
-                href={`/blogs/${blog._raw.sourceFileName}`}
+                key={blog.slug}
+                href={`/blogs/${blog.slug}`}
                 className="group bg-card border border-border rounded-lg p-6 hover:border-primary transition hover:shadow-lg hover:shadow-primary/10"
               >
                 <div className="space-y-4">
@@ -75,7 +79,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Categories Section */}
       <section
         id="categories"
@@ -92,30 +95,33 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {categories.map((category) => {
-              const Icon = category.icon;
+              const Icon = Icons[category.icon] as ElementType;
               return (
                 <Link
-                  key={category.id}
-                  href={`/category/${category.id}`}
-                  className="group bg-card border border-border rounded-lg p-6 hover:border-primary transition hover:shadow-lg hover:shadow-primary/10"
+                  key={category._id}
+                  href={`/categories/${category.slug}`}
+                  className="group bg-card border  border-blue-500/20 rounded-lg p-6 hover:border-primary transition hover:shadow-lg hover:shadow-primary/10"
                 >
                   <div className="space-y-4">
                     <div
-                      className={`w-12 h-12 rounded-lg bg-linear-to-br ${category.color} flex items-center justify-center`}
+                      className={cn(
+                        `w-12 h-12 rounded-lg bg-linear-to-br  flex items-center justify-center`,
+                        category.style,
+                      )}
                     >
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition">
-                        {category.title}
+                        {category.name}
                       </h3>
                       <p className="text-muted-foreground text-sm mt-1">
-                        {category.description}
+                        {category.desc}
                       </p>
                     </div>
                     <div className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition">
                       <span className="text-sm font-medium">Explore</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <Icons.ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
                 </Link>
@@ -124,7 +130,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Docs Section */}
       <section
         id="docs"
@@ -144,11 +149,11 @@ export default function Home() {
               href="/docs"
               className="text-primary hover:text-accent transition flex items-center gap-2"
             >
-              View All <ArrowRight className="w-4 h-4" />
+              View All <Icons.ArrowRight className="w-4 h-4" />
             </Link>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
-            {allDocs.map((doc) => (
+            {/* {allDocs.map((doc) => (
               <Link
                 key={doc._id}
                 href={`/${doc._id}`}
@@ -166,11 +171,10 @@ export default function Home() {
                   </p>
                 </div>
               </Link>
-            ))}
+            ))} */}
           </div>
         </div>
       </section>
-
       {/* CTA Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="bg-linear-to-r from-primary/20 to-accent/20 border border-primary/30 rounded-lg p-12 text-center space-y-6">
@@ -186,8 +190,6 @@ export default function Home() {
           </Button>
         </div>
       </section>
-
-    
     </div>
   );
 }

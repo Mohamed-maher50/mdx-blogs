@@ -5,6 +5,14 @@ date: "2025-10-25"
 readingTime: 5 min read
 ---
 
+```css
+:where(h1, h2, h3) {
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+```
+
 # Getting Started with React 19
 
 React 19 is here — and it’s a big one. After several years of incremental improvements, React has introduced features that simplify state management, optimize rendering, and improve developer ergonomics.
@@ -36,7 +44,6 @@ One of the headline features is the new **React Compiler** — a static analysis
 ```jsx
 function TodoList({ todos }) {
   const completed = useMemo(() => todos.filter((todo) => todo.done), [todos]);
-
   return (
     <ul>
       {completed.map((todo) => (
