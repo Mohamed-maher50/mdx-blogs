@@ -25,18 +25,7 @@
 - **Prism React Renderer** for code syntax highlighting  
 - **TypeScript** for static typing  
 - Linting via **ESLint**
-- 
-├── app/ # Next.js route and page components
-├── components/ # Reusable UI components
-├── constants/ # Static constants (e.g., config, enums)
-├── content/ # MDX content (blog posts, pages)
-├── features/ # Feature-specific modules (UI + logic)
-├── lib/ # Shared utilities (helpers, services)
-├── public/ # Static assets (images, fonts)
-├── next.config.mjs # Next.js configuration
-├── package.json # Dependencies and project metadata
-├── tsconfig.json # TypeScript configuration
-└── tailwind.config.mjs # Tailwind CSS configuration
+
 
 - **`app/`** houses Next.js application routes and page entrypoints.
 - **`components/`** contains React components used throughout the UI.
