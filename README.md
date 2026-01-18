@@ -42,17 +42,20 @@
    git clone https://github.com/Mohamed-maher50/mdx-blogs.git
    cd mdx-blogs
 2. Install dependencies (npm, yarn, or pnpm):
-
+```bash
 npm install
 # or
 yarn install
 # or
 pnpm install
+```
 Running the Project
 Development
 Start the local development server:
-npm run dev
 
+```
+npm run dev
+```
 Visit http://localhost:3000 in your browser.
 Production Build
 Build the optimized production bundle:
@@ -67,64 +70,54 @@ VariablePurposeCONTENTFUL_SPACE_IDContentful space identifierCONTENTFUL_ACCESS_T
 
 Only include secure variables in .env.local, exclude from version control.
 
-Usage
-Developers can author blog posts as .mdx files under the content/ directory. Each MDX file can include frontmatter metadata (title, date, tags) and JSX components importable from the components/ directory. Next.js pages automatically route based on folder structure under app/.
-Example MDX file:
----
-title: "My First Post"
-date: "2025-01-01"
----
-
-# Hello World
-
-This is my MDX post!
-
 Scripts
 ScriptDescriptiondevRuns development server with TurbopackbuildCompiles optimized production buildstartStarts production serverlintRuns ESLint against source files
 These are defined in package.json:
+
+```
 "scripts": {
   "dev": "next dev --turbopack",
   "build": "next build",
   "start": "next start",
   "lint": "next lint"
 }
-
-Architecture
-The application uses the App Router of Next.js with a modular, content-driven architecture:
-
-
-MDX files are compiled at build time (or on demand) using next-mdx-remote.
+```
+# Architecture
+## The application uses the App Router of Next.js with a modular, content-driven architecture:
 
 
-A layout layer in app/ wraps pages for consistent UI around blog posts.
+- MDX files are compiled at build time (or on demand) using next-mdx-remote.
 
 
-Components and utility functions abstract UI concerns and data fetching to maintain separation of concerns.
+- A layout layer in app/ wraps pages for consistent UI around blog posts.
 
 
-Tailwind CSS provides styling and utilities for responsive, consistent design.
+- Components and utility functions abstract UI concerns and data fetching to maintain separation of concerns.
 
 
-Optional GraphQL integration (via graphql-request and contentful) suggests support for CMS-backed content.
+- Tailwind CSS provides styling and utilities for responsive, consistent design.
 
 
-Future Improvements
-Based on the current codebase, consider:
+- Optional GraphQL integration (via graphql-request and contentful) suggests support for CMS-backed content.
 
 
-Adding documentation for content schema and MDX rendering configuration.
+# Future Improvements
+## Based on the current codebase, consider:
 
 
-Implementing SEO metadata support (Open Graph, structured data).
+- Adding documentation for content schema and MDX rendering configuration.
 
 
-Providing pagination or tag/category filtering for blog listings.
+- Implementing SEO metadata support (Open Graph, structured data).
 
 
-Adding automated tests (Jest/React Testing Library).
+- Providing pagination or tag/category filtering for blog listings.
 
 
-Incorporating image optimization (e.g., Next.js next/image integration with MDX).
+- Adding automated tests (Jest/React Testing Library).
+
+
+- Incorporating image optimization (e.g., Next.js next/image integration with MDX).
 
 
 License
@@ -132,10 +125,19 @@ This project defaults to the MIT License unless otherwise specified.
 MIT License
 
 
----
-
-If you want, I can also generate **documentation for how to author MDX content** for this project or a **deployment guide** (e.g., Vercel configuration).
-::contentReference[oaicite:0]{index=0}
-
+```
 ## Project Structure
+
+```text
+├── app/                     # Next.js route and page components
+├── components/              # Reusable UI components
+├── constants/               # Static constants (e.g., config, enums)
+├── content/                 # MDX content (blog posts, pages)
+├── features/                # Feature-specific modules (UI + logic)
+├── lib/                     # Shared utilities (helpers, services)
+├── public/                  # Static assets (images, fonts)
+├── next.config.mjs          # Next.js configuration
+├── package.json             # Dependencies and project metadata
+├── tsconfig.json            # TypeScript configuration
+└── tailwind.config.mjs      # Tailwind CSS configuration
 
