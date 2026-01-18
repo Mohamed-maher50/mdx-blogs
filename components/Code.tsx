@@ -29,7 +29,7 @@ const Code = ({
   return (
     <div dir="ltr" className="relative  flex flex-col gap-3 isolate">
       <Tabs defaultValue="code">
-        <TabsList>
+        <TabsList hidden={!preview}>
           <TabsTrigger value="code">
             <Code2 />
           </TabsTrigger>
@@ -38,6 +38,7 @@ const Code = ({
           </TabsTrigger>
         </TabsList>
         <LiveProvider
+          disabled={!preview}
           theme={themes.jettwaveDark}
           language={language}
           noInline
@@ -51,8 +52,12 @@ const Code = ({
           enableTypeScript
           code={code}
         >
-          <TabsContent value="code">
-            {<LiveEditor className="text-left text-lg" />}
+          <TabsContent
+            forceMount
+            className="data-[state=inactive]:hidden"
+            value="code"
+          >
+            {<LiveEditor className="text-left text-lg font-mono" />}
           </TabsContent>
           <TabsContent value="preview">
             <div className="bg-blue-500/5">{preview && <LivePreview />}</div>

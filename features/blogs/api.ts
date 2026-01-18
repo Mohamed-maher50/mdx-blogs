@@ -16,10 +16,10 @@ export async function getBlogsByCategory(slug: string): Promise<Blog[]> {
   );
   return res.bloghubCollection.items;
 }
-export const getBlogs = cache(async function getBlogs(): Promise<Blog[]> {
+export const getBlogs = async function getBlogs(): Promise<Blog[]> {
   const res = await client.request<GetBlogsByCategoriesResponse>(GET_BLOGS);
   return res.bloghubCollection.items;
-});
+};
 export const getBlogBySlug = cache(async (slug: string): Promise<Blog> => {
   const res = await client.request<GetBlogsByCategoriesResponse>(
     GET_BLOG_BY_SLUG,
